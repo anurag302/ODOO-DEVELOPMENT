@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="student_view_tree" model="ir.ui.view">
+            <field name="name">Student Tree View</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name" />
+                    <field name="age" />
+                    <field name="photo" />
+                    <field name="gender" />
+                    <field name="student_dob" />
+                    <field name="student_blood_group" />
+                    <field name="nationality" />
+                </tree>
+            </field>
+        </record>
+        <!-- Form View -->
+        <record id="student_view_form" model="ir.ui.view">
+            <field name="name">Student Form View</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <form string="Student Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="age" />
+                                <field name="photo" />
+                                <field name="gender" />
+                            </group>
+                            <group>
+                                <field name="student_dob" />
+                                <field name="student_blood_group" />
+                                <field name="nationality" />
+                                <field name="subject_id" />
+                                <field name="subject_ids">
+                                    <tree string="dff">
+                                        <field name="name" />
+                                    </tree>
+                                    <form string="fff">
+                                        <field name="name" />
+                                        <field name="student_id" />
+                                        <!-- <field name="nationality"/> -->
+                                        <button name="name" type="object" />
+                                    </form>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Action -->
+        <record id="action_student" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">student.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Menu Item -->
+        <menuitem name="School" id="main_school_menu" sequence="1" />
+        <menuitem id="student_menu" name="Student" action="action_student" parent="main_school_menu" sequence="1" />
+        <record model="ir.ui.view" id="view_buttons_form">
+            <field name="name">button</field>
+            <field name="model">button.demo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Button record">
+                    <header>
+                        <button string="Generate name" type="object" name="generate_record_name" class="oe_highlight" />
+                        <button string="Generate password" type="object" name="generate_record_password" class="oe_highlight" />
+                        <button string="Generate first" type="object" name="first_no" class="oe_highlight" />
+                        <button string="Generate second" type="object" name="second_no" class="oe_highlight" />
+                        <button string="Generate result" type="object" name="results" class="oe_highlight" />
+                        <!-- <button string="Clear data" type="object" name="clear_record_data" /> -->
+                    </header>
+                    <sheet>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group>
+                                    <group>
+                                        <field name="name" />
+                                        <field name="password" />
+                                    </group>
+                                    <group>
+                                        <field name="first" />
+                                        <field name="second" />
+                                        <field name="result" />
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_button_action_demo" model="ir.actions.act_window">
+            <field name="name">button_action_demo</field>
+            <field name="res_model">button.demo</field>
+            <field name="view_mode">form</field>
+        </record>
+        <menuitem id="button_action_demo_menu" name="button_action_demo" action="action_button_action_demo" parent="main_school_menu" sequence="1" />
+        <record id="company_view_tree" model="ir.ui.view">
+            <field name="name">Company Tree View</field>
+            <field name="model">company.company</field>
+            <field name="arch" type="xml">
+                <tree string="Company">
+                    <field name="owner" />
+                    <field name="company_type" />
+                    <field name="company_name" />
+                    <field name="location" />
+                    <field name="total_employee" />
+                    <field name="hr_name" />
+                </tree>
+            </field>
+        </record>
+        <record id="company_view_form" model="ir.ui.view">
+            <field name="name">Company Form View</field>
+            <field name="model">company.company</field>
+            <field name="arch" type="xml">
+                <form string="Company Form">
+                    <header>
+                        <button string="Generate owner" type="object" name="employee" class="oe_highlight" />
+                    </header>
+                    <sheet>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group>
+                                    <group>
+                                        <field name="owner" />
+                                        <field name="company_type" />
+                                        <field name="company_name" />
+                                    </group>
+                                    <group>
+                                        <field name="location" />
+                                        <field name="total_employee" />
+                                        <field name="hr_name" />
+                                        <field name="employee_id">
+                                            <tree string="hello">
+                                                <field name="name" />
+                                            </tree>
+                                            <form string="owner">
+                                                <header>
+                                                    <button name="name" type="object" />
+                                                </header>
+                                                <field name="name" />
+                                                <field name="name" />
+                                            </form>
+                                        </field>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="company_menu" model="ir.actions.act_window">
+            <field name="name">company</field>
+            <field name="res_model">company.company</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="company_action_menu" name="Company" action="company_menu" parent="main_school_menu" sequence="1" />
+        <!-- new module -->
+        <record id="government_view_tree" model="ir.ui.view">
+            <field name="name">Government Tree View</field>
+            <field name="model">government.government</field>
+            <field name="arch" type="xml">
+                <tree string="government">
+                    <field name="prime_minister_name" />
+                    <field name="home_minister_name" />
+                    <field name="defance_minister_name" />
+                    <field name="it_minister_name" />
+                    <field name="capital" />
+                    <field name="country" />
+                </tree>
+            </field>
+        </record>
+        <record id="government_view_form" model="ir.ui.view">
+            <field name="name">Government Form View</field>
+            <field name="model">government.government</field>
+            <field name="arch" type="xml">
+                <form string="government Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="prime_minister_name" />
+                                <field name="home_minister_name" />
+                                <field name="defance_minister_name" />
+                            </group>
+                            <group>
+                                <field name="it_minister_name" />
+                                <field name="capital" />
+                                <field name="country" />
+                            </group>
+                        </group>
+                        <notebook colspan="3">
+                            <page name="personal_information" string="Personal Information">
+                                <sheet>
+                                    <group>
+                                        <field name="state" />
+                                    </group>
+                                </sheet>
+                            </page>
+                        </notebook>
+                        <field name="notes" style="width:40%%" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Action -->
+        <record id="action_government" model="ir.actions.act_window">
+            <field name="name">government</field>
+            <field name="res_model">government.government</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Menu Item -->
+        <menuitem name="School" id="main_school_menu" sequence="1" />
+        <menuitem id="government_menu" name="Government" action="action_government" parent="main_school_menu" sequence="1" />
+        <record id="state_view_tree" model="ir.ui.view">
+            <field name="name">state Tree View</field>
+            <field name="model">state.state</field>
+            <field name="arch" type="xml">
+                <tree string="state">
+                    <field name="cheef_minister" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record id="state_form_view" model="ir.ui.view">
+            <field name="name">state</field>
+            <field name="model">state.state</field>
+            <field name="arch" type="xml">
+                <form string="state">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="cheef_minister" />
+                                <field name="education_minister" />
+                                <field name="state" />
+                            </group>
+                            <group>
+                                <field name="pa" />
+                                <field name="dg" />
+                                <field name="country" />
+                            </group>
+                        </group>
+     
+                    </sheet>
+                    <notebook colspan="3">
+                            <page name="personal_information" string="Personal Information">
+                                <sheet>                                    
+                                        <field name="student_ide" />                                   
+                                </sheet>
+                            </page>
+                   </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="action_state" model="ir.actions.act_window">
+            <field name="name">state</field>
+            <field name="res_model">state.state</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="state_menu" name="State" action="action_state" parent="main_school_menu" sequence="1" />
+    </data>
+</odoo>
+

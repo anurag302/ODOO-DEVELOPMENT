@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_student,access.student.student,model_student_student,base.group_user,1,1,1,1
+access_subject_subject,access.subject.subject,model_subject_subject,base.group_user,1,1,1,1
+access_button_action_demo_button_action_demo,access.button.demo,model_button_demo,base.group_user,1,1,1,1
+access_company_company,access.company.company,model_company_company,base.group_user,1,1,1,1
+access_government_government,access.government.government,model_government_government,base.group_user,1,1,1,1
+access_state_state,access.state.state,model_state_state,base.group_user,1,1,1,1

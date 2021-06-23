@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="prodect_view_tree" model="ir.ui.view">
+            <field name="name"> Prodect Tree View</field>
+            <field name="model">prodect.prodect</field>
+            <field name="arch" type="xml">
+                <tree string="Prodect">
+                    <field name="name" />
+                    <field name="header" />
+                    <field name="prodect_details" />
+                    <field name="company" />
+                    <field name="date_order" />
+                    <field name="price_total" />
+                    <field name="receipt_no" />
+                    <field name="product_type" />
+                </tree>
+            </field>
+        </record>
+        <!--  Form View  -->
+        <record id="prodect_view_form" model="ir.ui.view">
+            <field name="name">prodect Form View</field>
+            <field name="model">prodect.prodect</field>
+            <field name="arch" type="xml">
+                <form string="prodect Form">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <field name="name" required="1" placeholder="name" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="2" colspan="4" name="personal_detail">
+                                    <field name="header" />
+                                    <field name="prodect_details" />
+                                    <field name="company" />
+                                    <field name="date_order" />
+                                    <field name="price_total" />
+                                    <field name="receipt_no" />
+                                    <field name="product_type" />
+                                </group>
+                            </page>
+                            <page name="personal_Mydata" string="Personal Mydata">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="header" />
+                                    <field name="prodect_details" />
+                                    <field name="company" />
+                                    <field name="date_order" />
+                                    <field name="price_total" />
+                                    <field name="receipt_no" />
+                                    <field name="product_type" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  Action  -->
+        <record id="action_prodect" model="ir.actions.act_window">
+            <field name="name">prodect</field>
+            <field name="res_model">prodect.prodect</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--  Menu Item  -->
+        <menuitem name="Data" id="main_Data_menu" sequence="1" />
+        <menuitem id="prodect_menu" name="prodect" action="action_prodect" parent="main_Data_menu" sequence="1" />
+        <!-- second model -->
+        <record id="resume_view_tree" model="ir.ui.view">
+            <field name="name"> Resume Tree View</field>
+            <field name="model">resume.resume</field>
+            <field name="arch" type="xml">
+                <tree string="Resume">
+                    <field name="name" />
+                    <field name="father_name" />
+                    <field name="mother_name" />
+                    <field name="qualification" />
+                    <field name="college" />
+                    <field name="dob" />
+                    <field name="address" />
+                </tree>
+            </field>
+        </record>
+        <record id="resume_view_form" model="ir.ui.view">
+            <field name="name">resume Form View</field>
+            <field name="model">resume.resume</field>
+            <field name="arch" type="xml">
+                <form string="resume Form">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <field name="name" required="1" placeholder="name" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="father_name" />
+                                    <field name="mother_name" />
+                                    <field name="qualification" />
+                                    <field name="college" />
+                                    <field name="dob" />
+                                    <field name="address" />
+                                    <field name="hobbies_id" />
+
+                                    <field name="family_id">
+                                        <tree>
+                                            <field name="name" />
+                                        </tree>
+                                        <form>
+                                            <field name="name" />
+                                            <field name="brother_id" />
+                                            <field name="country"/>
+                                            <field name="state"/>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="resume_search_view" model="ir.ui.view">
+            <field name="name">resume search view</field>
+            <field name="model">resume.resume</field>
+            <field name="arch" type="xml">
+                <search string="Search resume">
+                    <field name="name" />
+                    <field name="name" />
+                    <field name="hobbies_id" />
+                    <filter string="master" name="name" domain="[('qualification','=','m')]" help="resume with qualification" />
+                    <filter string="Bechlar" name="name" domain="[('qualification','=','b')]" help="resume with qualification" />
+                    <group expand="1" string="Group By">
+                        <filter string="qualification" name="qualification" context="{'group_by':'qualification'}" />
+                        <filter string="hobbies" name="hobbies_id" context="{'group_by':'hobbies_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_resume" model="ir.actions.act_window">
+            <field name="name">resume</field>
+            <field name="res_model">resume.resume</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="resume_menu" name="resume" action="action_resume" parent="main_Data_menu" sequence="4" />
+        <!-- third modul -->
+        <record id="myfamily_view_tree" model="ir.ui.view">
+            <field name="name"> myfamily Tree View</field>
+            <field name="model">myfamily.myfamily</field>
+            <field name="arch" type="xml">
+                <tree string="myfamily">
+                    <field name="name" />
+                    <field name="father_name" />
+                    <field name="mother_name" />
+                    <field name="grand_father" />
+                    <field name="brother" />
+                    <field name="sister" />
+                    <field name="my_age" />
+                    <field name="my_marks" />
+                </tree>
+            </field>
+        </record>
+        <record id="myfamily_view_form" model="ir.ui.view">
+            <field name="name">myfamily Form View</field>
+            <field name="model">myfamily.myfamily</field>
+            <field name="arch" type="xml">
+                <form string="myfamily Form">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <h1>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="name" required="1" placeholder="name" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </h1>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="father_name" />
+                                    <field name="mother_name" />
+                                    <field name="grand_father" />
+                                    <field name="brother" />
+                                    <field name="sister" />
+                                    <field name="my_age" />
+                                    <field name="my_marks" />
+                                    <field name="country" />
+                                    <field name="state" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_myfamily" model="ir.actions.act_window">
+            <field name="name">myfamily</field>
+            <field name="res_model">myfamily.myfamily</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="myfamily_menu" name="myfamily" action="action_myfamily" parent="main_Data_menu" sequence="4" />
+        <!-- third modul -->
+        <record id="developer_view_tree" model="ir.ui.view">
+            <field name="name"> developer Tree View</field>
+            <field name="model">developer.developer</field>
+            <field name="arch" type="xml">
+                <tree string="developer">
+                    <field name="ceo" />
+                    <field name="manager" />
+                    <field name="team_member" />
+                    <field name="team_leader" />
+                    <field name="technology" />
+                    <field name="python_developer_total" />
+                    <field name="java_developer_total" />
+                </tree>
+            </field>
+        </record>
+        <record id="developer_view_form" model="ir.ui.view">
+            <field name="name"> developer form view</field>
+            <field name="model">developer.developer</field>
+            <field name="arch" type="xml">
+                <form string="developer">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <h1>
+                            <table>
+                                <tr>
+                                    <td style="padding-right:10px;">
+                                        <field name="ceo" required="1" placeholder="ceo" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </h1>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="manager" />
+                                    <field name="team_member" />
+                                    <field name="team_leader" />
+                                    <field name="technology" />
+                                    <field name="python_developer_total" />
+                                    <field name="java_developer_total" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_developer" model="ir.actions.act_window">
+            <field name="name">developer</field>
+            <field name="res_model">developer.developer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="developer_menu" name="developer" action="action_developer" parent="main_Data_menu" sequence="3" />
+        <!-- 4 module -->
+        <record id="view_record_tree" model="ir.ui.view">
+            <field name="name">record tree</field>
+            <field name="model">record.record</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="record">
+                    <field name="name" />
+                    <field name="middle_name" />
+                    <field name="last_name" />
+                    <field name="student_gender" />
+                    <field name="student_age" />
+                    <field name="student_dob" />
+                    <field name="student_blood_group" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_record_form" model="ir.ui.view">
+            <field name="name">record form</field>
+            <field name="model">record.record</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="record">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <field name="name" required="1" placeholder="First Name" />
+                                        </td>
+                                        <td style="padding-right:10px;">
+                                            <field name="middle_name" placeholder="Middle Name" />
+                                        </td>
+                                        <td style="padding-right:10px;">
+                                            <field name="last_name" placeholder="Last Name" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        /> <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="student_gender" />
+                                    <field name="student_age" />
+                                    <field name="student_dob" />
+                                    <field name="student_gender" />
+                                    <field name="student_blood_group" />
+                                    <field name="nationality" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="record_search_view" model="ir.ui.view">
+            <field name="name">record search view</field>
+            <field name="model">record.record</field>
+            <field name="arch" type="xml">
+                <search string="Search Record">
+                    <field name="name" />
+                    <field name="student_age" />
+                    <field name="nationality" />
+                    <filter string="Male" name="male" domain="[('student_gender','=','m')]" help="Students with gender as Male" />
+                    <filter string="Female" name="female" domain="[('student_gender','=','f')]" help="Students with gender as Female" />
+                    <filter string="Others" name="others" domain="[('student_gender','=','others')]" help="Students with gender as Others" />
+                    <group expand="1" string="Group By">
+                        <filter string="Nationality" name="nationality" context="{'group_by':'nationality'}" />
+                        <filter string="Blood Group" name="blood_group" context="{'group_by':'student_blood_group'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_record">
+            <field name="name">record</field>
+            <field name="res_model">record.record</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new student
+                </p>
+            </field>
+        </record>
+        <menuitem id="record_menu" name="Record" action="action_view_record" parent="main_Data_menu" sequence="4" />
+    </data>
+</odoo>

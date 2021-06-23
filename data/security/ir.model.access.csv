@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_prodect_prodect,access.prodect.prodect,model_prodect_prodect,base.group_user,1,1,1,1
+access_resume_resume,access.resume.resume,model_resume_resume,base.group_user,1,1,1,1
+access_hobbies_hobbies,access.hobbies.hobbies,model_hobbies_hobbies,base.group_user,1,1,1,1
+access_myfamily_myfamily,access.myfamily.myfamily,model_myfamily_myfamily,base.group_user,1,1,1,1
+access_developer_developer,access.developer.developer,model_developer_developer,base.group_user,1,1,1,1
+access_record_record,access.record.record,model_record_record,base.group_user,1,1,1,1
+
+
+
